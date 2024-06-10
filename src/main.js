@@ -12,5 +12,8 @@ import { router } from "./router";
 //import font ubuntu
 import "@fontsource/ubuntu";
 
+//import fontawesome
+import "@fortawesome/fontawesome-free/js/all.js";
+
 //app mount
 createApp(App).use(router).mount("#app");
