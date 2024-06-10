@@ -7,6 +7,7 @@ export default {
 <template>
   <header>
     <h2>Header</h2>
+    <nav>Prova Pull</nav>
   </header>
 </template>
 
