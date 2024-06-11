@@ -15,5 +15,8 @@ import "@fontsource/ubuntu";
 //import fontawesome
 import "@fortawesome/fontawesome-free/js/all.js";
 
+//import bootstrap
+import "bootstrap/dist/css/bootstrap.css";
+
 //app mount
 createApp(App).use(router).mount("#app");
