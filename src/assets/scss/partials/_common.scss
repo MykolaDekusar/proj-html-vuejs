@@ -5,5 +5,5 @@ COMMON
 @use './variables' as *;
 
 body {
-  background-color: $body-bg-color;
+  background-color: $bg-primary;
 }
