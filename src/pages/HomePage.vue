@@ -1,9 +1,11 @@
 <script>
-import WrapAround from "../components/WrapAround.vue";
+import { Carousel, Navigation, Slide } from "vue3-carousel";
 export default {
   name: "HomePage",
   components: {
-    WrapAround,
+    Carousel,
+    Slide,
+    Navigation,
   },
   data() {
     return {
@@ -15,6 +17,7 @@ export default {
         "we fall. then we rise.",
       ],
       interval: null,
+      portfolioImages: 4,
     };
   },
   mounted() {
@@ -62,7 +65,27 @@ export default {
       </div>
     </div>
 
-    <div class="trending-games"><h2>Trending Games</h2></div>
+    <div class="trending-games">
+      <h2>Trending Games</h2>
+      <div class="container">
+        <div class="carousel-container">
+          <Carousel :items-to-show="4" :autoplay="3000" :wrap-around="true">
+            <Slide v-for="image in portfolioImages" :key="slide">
+              <div class="carousel__item">
+                <img
+                  :src="`/img/portfolio/${image}.png`"
+                  :alt="`${image}.png`"
+                  class="img-fluid"
+                />
+              </div>
+            </Slide>
+            <template #addons>
+              <Navigation />
+            </template>
+          </Carousel>
+        </div>
+      </div>
+    </div>
     <div class="experience"><h2>12 Years Experience</h2></div>
     <div class="live"><h2>Live Streaming</h2></div>
     <div class="trending"><h2>Trending Battle</h2></div>
@@ -174,7 +197,25 @@ export default {
   z-index: 1;
 }
 
-.trending-games,
+.carousel-container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.carousel__prev {
+  background-color: #00ac4d;
+  top: 0;
+  right: 50px;
+}
+.carousel__next {
+  background-color: #00ac4d;
+  top: 0;
+  right: 0;
+}
+.carousel__item img {
+  width: 290px;
+}
+
 .experience,
 .live,
 .trending,

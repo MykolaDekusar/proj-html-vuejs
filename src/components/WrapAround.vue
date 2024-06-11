@@ -11,7 +11,7 @@ export default defineComponent({
     Slide,
     Navigation,
   },
-  props: {},
+  props: [],
 });
 </script>
 
