@@ -1,20 +1,18 @@
 <script>
-import { defineComponent } from 'vue'
-import { Carousel, Navigation, Slide } from 'vue3-carousel'
+import { defineComponent } from "vue";
+import { Carousel, Navigation, Slide } from "vue3-carousel";
 
-import 'vue3-carousel/dist/carousel.css'
+import "vue3-carousel/dist/carousel.css";
 
 export default defineComponent({
-  name: 'WrapAround',
+  name: "WrapAround",
   components: {
     Carousel,
     Slide,
     Navigation,
   },
-  promps:{
-    
-  }
-})
+  props: {},
+});
 </script>
 
 <template>

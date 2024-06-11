@@ -1,6 +1,10 @@
 <script>
+import WrapAround from "../components/WrapAround.vue";
 export default {
   name: "HomePage",
+  components: {
+    WrapAround,
+  },
   data() {
     return {
       currentIndex: 0,
@@ -73,7 +77,6 @@ export default {
 <style lang="scss" scoped>
 @use "../assets/scss/partials/variables" as *;
 .jumbo {
-  background-color: antiquewhite;
   position: relative;
   width: 100%;
   height: 900px;
