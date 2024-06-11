@@ -31,7 +31,7 @@ export default {
 <!-- STYLE -->
 <style lang="scss" scoped>
 // import
-@use '../scss/partials/variables' as *;
+@use '../assets/scss/partials/variables' as *;
 
 
 </style>
