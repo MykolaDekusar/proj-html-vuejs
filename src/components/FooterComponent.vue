@@ -1,15 +1,12 @@
 <script>
-import Carousell from './Carousell.vue'
 import { defineComponent } from 'vue'
-import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { Carousel, Slide} from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 export default {
   name: "FooterComponent",
   components: {
-    Carousell,
     Carousel,
     Slide,
-    Navigation
   },
   data(){
     return{
@@ -23,12 +20,11 @@ export default {
    <section class="team-icons">
     <div class="container">
       <Carousel class="row-outer" :items-to-show="5" :wrap-around="true">
-        <Slide class="logo-img" v-for="slide in 10" :key="slide">
+        <Slide v-for="slide in teamIcons" :key="slide">
           <div class="carousel__item"><img :src="'./img/team/'+ slide + '.png'" alt=""></div>
         </Slide>
       </Carousel>
         </div>
-    
   </section>
   <!-- start footer -->
   <footer>
@@ -52,7 +48,7 @@ export default {
         <div class="col-xl-2 col-lg-6 col-md-6 col-sm-8">
           <h4 class="mt-3">Quick Links</h4>
           <ul class="quick-links">
-            <li><a href="">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="">Pages</a></li>
             <li><a href="">Tournament</a></li>
             <li><a href="">Shop</a></li>
@@ -63,7 +59,7 @@ export default {
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-8">
           <h4 class="mt-3">Our Services</h4>
           <ul class="our-services">
-            <li><a href="">About us</a></li>
+            <li><a href="/about">About us</a></li>
             <li><a href="">Latest Turnament</a></li>
             <li><a href="">Upcoming Game</a></li>
             <li><a href="">Faqs</a></li>
@@ -104,19 +100,7 @@ export default {
   padding: 40px 0;
   border-radius: 10px;
 }
-.icon-container {
-  min-width: 200px;
-  margin-right: 10px;
-}
-.logo-img{
-  width: 120px;
-  margin: 0 auto;
-}
-.logo-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+
 // footer setting
 footer {
   background-image: url(/img/background/footer-bg.png);
