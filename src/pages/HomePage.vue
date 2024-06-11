@@ -16,14 +16,24 @@ export default {
         "you speak of justice",
         "we fall. then we rise.",
       ],
+      gameTeams: ["1.png", "5.png", "6.png", "3.png"],
+      gameTitles: [
+        "Assassin's Creed",
+        "Call of Duty",
+        "Tomb Raider",
+        "Mortal Combat X",
+      ],
       interval: null,
-      portfolioImages: 4,
+      portfolioImages: [1, 2, 3, 4],
+      settings: {
+        snapAlign: "left",
+      },
     };
   },
   mounted() {
     this.startSlider();
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearInterval(this.interval);
   },
   methods: {
@@ -66,21 +76,54 @@ export default {
     </div>
 
     <div class="trending-games">
-      <h2>Trending Games</h2>
       <div class="container">
+        <div class="col-6">
+          <h3>Trending Games</h3>
+          <h1>Choose Who Is The Best In World!</h1>
+        </div>
         <div class="carousel-container">
-          <Carousel :items-to-show="4" :autoplay="3000" :wrap-around="true">
-            <Slide v-for="image in portfolioImages" :key="slide">
+          <Carousel
+            :items-to-show="4"
+            :autoplay="4000"
+            v-bind="settings"
+            :wrap-around="true"
+          >
+            <Slide v-for="(slide, index) in portfolioImages" :key="index">
               <div class="carousel__item">
                 <img
-                  :src="`/img/portfolio/${image}.png`"
-                  :alt="`${image}.png`"
+                  :src="`/img/portfolio/${slide}.png`"
+                  :alt="`portfolio-${slide}.png`"
                   class="img-fluid"
                 />
+                <div class="new-label"><span>New</span></div>
+                <div class="game-info">
+                  <div class="logo">
+                    <img
+                      :src="`/img/team/${gameTeams[index % gameTeams.length]}`"
+                      alt=""
+                    />
+                  </div>
+
+                  <div class="extra-info">
+                    <h3>{{ gameTitles[index % gameTitles.length] }}</h3>
+                    <p>Donec sollicitudin malesuada.</p>
+                  </div>
+                </div>
               </div>
             </Slide>
             <template #addons>
-              <Navigation />
+              <Navigation>
+                <template #next>
+                  <button class="carousel__next">
+                    <i class="fas fa-arrow-right-long"></i>
+                  </button>
+                </template>
+                <template #prev>
+                  <button class="carousel__prev">
+                    <i class="fas fa-arrow-left-long"></i>
+                  </button>
+                </template>
+              </Navigation>
             </template>
           </Carousel>
         </div>
@@ -99,6 +142,7 @@ export default {
 
 <style lang="scss" scoped>
 @use "../assets/scss/partials/variables" as *;
+
 .jumbo {
   position: relative;
   width: 100%;
@@ -200,20 +244,100 @@ export default {
 .carousel-container {
   max-width: 1250px;
   margin: 0 auto;
-}
-
-.carousel__prev {
-  background-color: #00ac4d;
-  top: 0;
-  right: 50px;
-}
-.carousel__next {
-  background-color: #00ac4d;
-  top: 0;
-  right: 0;
+  position: relative;
 }
 .carousel__item img {
   width: 290px;
+}
+.carousel__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+.carousel__next {
+  position: absolute;
+  top: -210px;
+  font-size: 18px;
+  padding: 5px;
+  background-color: $bg-green-primary;
+  border-radius: 50%;
+  color: #ffffff;
+}
+.carousel__prev {
+  position: absolute;
+  top: -210px;
+  left: 1120px;
+  font-size: 18px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.trending-games .col-6 h1 {
+  margin-top: 10px;
+  font-size: 55px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.trending-games .col-6 h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #00ac4d;
+  position: relative;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.trending-games {
+  background-color: $bg-primary;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+.game-info {
+  color: #ffffff;
+  position: sticky;
+  bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-cards;
+  padding: 10px;
+  max-width: 250px; // Ensure max width for the content
+  height: 100px;
+  padding-top: 18px;
+}
+.logo {
+  background-color: $bg-socials;
+  border-radius: 100%;
+  height: 74px;
+  width: 100px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 5px;
+}
+.logo img {
+  width: 40px;
+}
+.extra-info p {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 15px;
+}
+.extra-info h3 {
+  text-align: left;
+  padding-left: 9px;
+  font-size: 19px;
+  padding-top: 5px;
+}
+.new-label {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 5px 10px;
+  background-color: $bg-green-primary;
 }
 
 .experience,
@@ -228,7 +352,6 @@ export default {
   text-align: center;
 }
 
-.trending-games,
 .live,
 .upcoming,
 .team,
