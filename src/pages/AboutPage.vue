@@ -134,7 +134,7 @@ section {
    .jumbo {
       position: relative;
       width: 100vw;
-      height: 140vh;
+      height: 80vh;
       background-image: url('/img/background/breadcump-banner.png');
       background-size: cover;
       background-position: center;
@@ -235,9 +235,17 @@ section {
 
    .image {
       position: relative;
-      width: 100%;
-
+      width: 90%;
       overflow: hidden;
+      &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba($bg-primary, .5);
+         }
 
       .play {
          position: absolute;
