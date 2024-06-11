@@ -8,8 +8,8 @@ export default {
    props: {
 
    },
-   data(){
-      return{
+   data() {
+      return {
 
       }
    },
@@ -23,165 +23,246 @@ export default {
 
 <!-- HTML -->
 <template>
-  <section class="banner">
-      <div class="container">
-         <div class="content">
-            <h1 class="title">Contact</h1>
-            <span><a href="/">Home</a><i class="fa-solid fa-arrow-right"></i><a href="">Contact</a></span>
+   <section>
+      <div class="jumbo">
+         <div class="container">
+            <div class="content">
+               <h1 class="title">About Us</h1>
+               <span>
+                  <router-link :to="home" class="anchor">Home</router-link>
+                  <i class="fas fa-arrow-right"></i>
+                  About Us
+
+               </span>
+            </div>
+
+         </div>
+
+      </div>
+   </section>
+   <section class="experience">
+      <div class="container py-5">
+         <h3 class="pt-5">12 Year Experience</h3>
+         <div class="row g-5">
+            <div class="col-6 text">
+               <h2 class="mb-4">
+                  We Are The Best Gaming Company
+               </h2>
+               <p>
+                  Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed,
+                  convallis at tellus. Cras ultricies ligula sed magna dictum porta.Praesent sapien massa,
+                  convallis a pellentesque nec, egestas non nisi praesent sapien massa.
+               </p>
+               <p>
+                  Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed,
+                  convallis at tellus. Cras ultricies ligula sed magna dictum porta.
+               </p>
+               <ul>
+                  <li>
+                     <div class="icons"><i class="fas fa-check"></i></div>
+                     <p>Sed porttitor lectus nibh. Proin eget tortor risus.</p>
+                  </li>
+                  <li>
+                     <div class="icons"><i class="fas fa-check"></i></div>
+                     <p>Praesent sapien massa, convallis a pellentesque nec. risus. </p>
+                  </li>
+                  <li>
+                     <div class="icons"><i class="fas fa-check"></i></div>
+                     <p>Praesent sapien massa, convallis a pellentesque nec. risus. </p>
+                  </li>
+                  <li>
+                     <div class="icons"><i class="fas fa-check"></i></div>
+                     <p>Praesent sapien massa, convallis a pellentesque nec. risus. </p>
+                  </li>
+               </ul>
+               <div class="mb-4">
+                  <button class="btn ">Discover More <i class="fas fa-arrow-right"></i></button>
+                  <div class="play"> <a href=""><i class="fas fa-play"></i></a></div>
+
+               </div>
+            </div>
+            <div class="col-6">
+               <div class="image">
+                  <img src="../../public/img/wordSection/small3.png" alt="">
+                  <div class="play"><a href=""><i class="fas fa-play"></i></a></div>
+               </div>
+            </div>
          </div>
       </div>
-  </section>
-  <section class="contact">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-4 ">
-            <div class="contact-info">
-            <h2>Get a Quote</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor magni in nulla voluptatibus perferendis commodi aperiam sit officia veritatis tempore voluptas
-                consequatur accusamus reprehenderit voluptates, nam quas nesciunt repudiandae amet?
-            </p>
+   </section>
+   <section class="members">
+      <div class="container py-5">
+         <h3 class="pt-5">Team Members</h3>
+         <div class="row">
+            <div class="col-5">
+               <h2>Our Experts Team Members </h2>
             </div>
-            <div class="phone-number hover-me">
-               <div class="quote-icon"><i class="fa-solid fa-phone"></i></div>
-               <div >
-                  <h3>Phone Number</h3>
-                  <p>+880 130 309 8032 </p>
-                  <p>+880 130 309 8032 </p>
-               </div>
-            </div>
-            <div class="email-address hover-me">
-               <div class="quote-icon"><i class="fa-solid fa-envelope"></i></div>
-               <div >
-                  <h3>Email Address</h3>
-                  <p>example@gmail.com </p>
-               </div>
-            </div>
-            <div class="address hover-me">
-               <div class="quote-icon"><i class="fa-solid fa-location-pin"></i></div>
-               <div >
-                  <h3>Address</h3>
-                  <p>69/6 Broklyn Street, New York city, United States of America</p>
-               </div>
+            <div class="col-3">
+
             </div>
          </div>
-         <div class="col-lg-8"></div>
+
       </div>
-   </div>
-  </section>
+
+
+   </section>
 
 </template>
 
 
 <!-- STYLE -->
 <style lang="scss" scoped>
-// import
+// import:
 @use '../assets/scss/partials/variables' as *;
+@use '../assets/scss/partials/extend' as *;
+
 * {
-   color: white;
+   color: $text-primary;
 }
 
-.banner {
-   padding: 350px 0 150px;
-   background-image: url(/public/img/background/breadcump-banner.png);
-   position: relative;
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-position: center;
+h3 {
+   font-size: 20px;
+   font-weight: 600;
+   color: $text-secondary;
 }
 
-.banner::before{
-  content:"";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(26, 25, 53, 0.6);
+h2 {
+   font-size: 45px;
+   font-weight: 900;
 }
 
-.content {
-   position:relative;
-   text-align: center;
-   a{
-      text-decoration: none;
-   }
-   svg{
-      padding: 0 10px;
-      color: $bg-btn-primary;
-   }
-}
-.contact-info {
-      margin-bottom: 2.5rem;
-   }
+section {
+   .jumbo {
+      position: relative;
+      width: 100vw;
+      height: 80vh;
+      background-image: url('/img/background/breadcump-banner.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
-.title {
-   text-transform: uppercase;
-   font-size: 48px;
-   font-weight: 700;
-}
+      &::before {
+         position: absolute;
+         content: "";
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background: rgba(26, 25, 53, 0.6);
+      }
 
-// CONTACT STYLE
-.contact {
-   padding: 120px;
-   background-color: $bg-btn-secondary;
-   h2{
-      font-weight: 800;
-      font-size: 2.5rem;
-   }
-   p {
-      margin-bottom: 1rem;
-   }
-}
+      .container {
+         position: relative;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100%;
+         height: 100%;
+         width: 100%;
+         z-index: 5;
 
-.phone-number,
-.email-address,
-.address{
-   display: flex;
-   align-items: center;
-   padding: 1rem;
-   height: 150px;
-   border: 1px solid $bg-green-primary;
-   border-radius: 10px;
-   transition: all 0.3s;
-   margin-bottom: 2rem;
-   svg{
-      color: $bg-btn-primary;
-      font-size: 2rem;
-   }
-   p {
-      margin: 0;
-   }
-}
+         .content {
+            h1 {
+               text-transform: uppercase;
+               color: $text-primary;
+               font-size: 48px;
+               font-weight: 700;
+               text-align: center;
+            }
 
-.address {
-   .quote-icon{
-      svg{
-         width: 32px;
+            span {
+               display: block;
+               text-align: center;
+               color: $text-primary;
+               font-size: 18px;
+               font-weight: 500;
+
+               .anchor {
+                  color: inherit;
+                  text-decoration: none;
+                  cursor: pointer;
+               }
+
+               .fa-arrow-right {
+                  margin: 0 10px;
+                  color: $text-secondary;
+               }
+
+            }
+         }
       }
    }
 }
 
-.quote-icon {
-   padding: 1rem;
-   background-color:$bg-tertiary;
-   border-radius: 50%;
-   text-align: center;
-   margin-right: 15px;
+.experience {
+   background-color: $bg-primary;
+
+   .text {
+      ul {
+         padding-left: 0;
+
+         div.icons {
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+            border: 1.8px solid $text-secondary;
+            display: inline-block;
+            text-align: center;
+
+            .fa-check {
+               font-size: 15px;
+               line-height: 30px;
+               color: $text-secondary;
+            }
+         }
+
+         p {
+            display: inline-block;
+            margin-left: 10px;
+         }
+      }
+
+      button.btn {
+         @extend %btn;
+      }
+
+      div.play {
+         @extend %play;
+         display: inline-flex;
+         margin-left: 10px;
+      }
+   }
+
+   .image {
+      position: relative;
+      width: 100%;
+
+      overflow: hidden;
+
+      .play {
+         position: absolute;
+         @extend %play;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+
+         a {
+            .fa-play {
+               color: $text-primary;
+            }
+         }
+      }
+
+      img {
+         width: 110%;
+         height: auto;
+         object-fit: contain;
+         object-position: -30px;
+      }
+   }
 }
 
-.hover-me:hover{
-   transition: all 0.3s;
-   h3{
-      color:$bg-green-primary;
-   }
-   border: 1px solid $bg-primary;
+.members {
    background-color: $bg-tertiary;
-   .quote-icon {
-      background-color: $bg-btn-primary;
-   }
-   svg {
-      color: $bg-tertiary;
-   }
 }
-
 </style>
