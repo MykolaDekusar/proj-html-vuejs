@@ -5,6 +5,11 @@ export default {
     return {
       currentIndex: 0,
       jumboImages: ["bg1.png", "bg2.png", "bg3.png"],
+      jumboText: [
+        "you speak of justice",
+        "you speak of justice",
+        "we fall. then we rise.",
+      ],
       interval: null,
     };
   },
@@ -16,7 +21,7 @@ export default {
   },
   methods: {
     startSlider() {
-      this.interval = setInterval(this.showNextImage, 3000); // Change image every 3 seconds
+      this.interval = setInterval(this.showNextImage, 4000);
     },
     showNextImage() {
       this.currentIndex = (this.currentIndex + 1) % this.jumboImages.length;
@@ -38,8 +43,8 @@ export default {
       />
       <div class="container">
         <div class="col-6 content">
-          <h3>WELCOME TO RAXG</h3>
-          <h1>YOU SPEAK OF JUSTICE</h1>
+          <h3>welcome to raxg</h3>
+          <h1>{{ jumboText[currentIndex] }}</h1>
           <div class="buttons">
             <button class="read">
               Read More <i class="fas fa-arrow-right-long"></i>
@@ -66,6 +71,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../assets/scss/partials/variables" as *;
 .jumbo {
   background-color: antiquewhite;
   position: relative;
@@ -131,20 +137,26 @@ export default {
   }
   .buttons {
     display: flex;
+    align-items: center;
     margin-top: 30px;
   }
   .read {
-    padding: 10px 25px;
+    padding: 15px 25px;
     border: none;
     border-radius: 5px;
     margin-right: 20px;
+    background-color: $bg-green-primary;
+    color: $bg-primary;
+    font-weight: 900;
   }
 
   .play {
     border: none;
-    padding: 7px 20px;
+    padding: 7px 22px;
     border-radius: 100%;
-    font-size: 25px;
+    font-size: 30px;
+    background-color: $bg-green-primary;
+    color: $bg-primary;
   }
 }
 
