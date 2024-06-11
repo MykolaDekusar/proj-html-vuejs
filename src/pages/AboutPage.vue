@@ -32,7 +32,6 @@ export default {
                   <router-link :to="home" class="anchor">Home</router-link>
                   <i class="fas fa-arrow-right"></i>
                   About Us
-
                </span>
             </div>
 
@@ -135,7 +134,7 @@ section {
    .jumbo {
       position: relative;
       width: 100vw;
-      height: 80vh;
+      height: 140vh;
       background-image: url('/img/background/breadcump-banner.png');
       background-size: cover;
       background-position: center;
@@ -150,7 +149,6 @@ section {
          bottom: 0;
          background: rgba(26, 25, 53, 0.6);
       }
-
       .container {
          position: relative;
          display: flex;
@@ -162,6 +160,8 @@ section {
          z-index: 5;
 
          .content {
+            position: relative;
+            top: 20%;
             h1 {
                text-transform: uppercase;
                color: $text-primary;

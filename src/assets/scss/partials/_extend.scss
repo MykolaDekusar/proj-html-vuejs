@@ -35,6 +35,7 @@ EXTEND
     padding: 15px 25px;
     color: $bg-btn-secondary;
     cursor: pointer;
+    transition: all .3s;
 
     .fa-arrow-right {
         margin-left: 5px;
