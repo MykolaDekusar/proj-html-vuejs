@@ -2,35 +2,17 @@
 <script>
 // import:
 // import nomeImport from 'nomeImport';
-
+import BannerComponent from '../components/BannerComponent.vue';
 export default {
    nome: 'AboutPage',
-   props: {
-
-   },
-   data(){
-      return{
-
-      }
-   },
    components: {
-
-   }
+    BannerComponent,
+   },
 }
-
 </script>
-
-
 <!-- HTML -->
 <template>
-  <section class="banner">
-      <div class="container">
-         <div class="content">
-            <h1 class="title">Contact</h1>
-            <span><a href="/">Home</a><i class="fa-solid fa-arrow-right"></i><a href="">Contact</a></span>
-         </div>
-      </div>
-  </section>
+  <BannerComponent :title="'Contact'" :link="'Home'" />
   <section class="contact">
    <div class="container">
       <div class="row">
@@ -68,9 +50,7 @@ export default {
       </div>
    </div>
   </section>
-
 </template>
-
 
 <!-- STYLE -->
 <style lang="scss" scoped>
@@ -139,7 +119,7 @@ export default {
    display: flex;
    align-items: center;
    padding: 1rem;
-   height: 150px;
+   height: 125px;
    border: 1px solid $bg-green-primary;
    border-radius: 10px;
    transition: all 0.3s;

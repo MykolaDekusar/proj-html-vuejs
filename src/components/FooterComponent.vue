@@ -10,6 +10,9 @@ export default {
   },
   data(){
     return{
+      settings:{
+        snapAlign:'left',
+      },
       teamIcons:10,
     }
   },
@@ -19,7 +22,7 @@ export default {
 <template>
    <section class="team-icons">
     <div class="container">
-      <Carousel class="row-outer" :items-to-show="5" :wrap-around="true">
+      <Carousel class="row-outer" v-bind="settings" :items-to-show="6"  :wrap-around="true">
         <Slide v-for="slide in teamIcons" :key="slide">
           <div class="carousel__item"><img :src="'./img/team/'+ slide + '.png'" alt=""></div>
         </Slide>
@@ -70,7 +73,7 @@ export default {
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-8">
           <h4 class="mt-3">Contact Us</h4>
           <ul class="contact-us">
-            <li><i class="fa-solid fa-location-pin"></i><a href="">69 Broklyn Street, New York city, United States of America</a></li>
+            <li><i class="fa-solid fa-location-pin"></i><a href="/contact">69 Broklyn Street, New York city, United States of America</a></li>
             <li><i class="fa-solid fa-phone"></i><a href="">+880 222 333 2580 </a></li>
             <li><i class="fa-solid fa-envelope"></i><a href="">example@gmail.com </a></li>
             <li><i class="fa-solid fa-globe"></i><a href="">www.example.com </a></li>
@@ -79,7 +82,7 @@ export default {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Copyright RaxG | Designed by <a href="">Draeknes</a></p>
+      <p>Copyright RaxG | Designed by <a href="https://www.instagram.com/draeknes/">Draeknes</a></p>
     </div>
   </footer>
 </template>
@@ -126,7 +129,7 @@ footer {
       border: none;
       height: 45px;
       padding: 2px 15px;
-      width: 175px;
+      width: 200px;
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
       color: white;
@@ -196,6 +199,11 @@ h4{
       height: 25px;
       margin-right: 10px;
     }
+  }
+}
+.contact-us li:first-child{
+  svg {
+    width: 45px;
   }
 }
 
