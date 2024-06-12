@@ -3,6 +3,7 @@ import Jumbotron from "../components/Jumbotron.vue";
 import TrendingGamesCarousel from "../components/TrendingGamesCarousel.vue";
 import Experience from "../components/Experience.vue";
 import LiveStreaming from "../components/LiveStreaming.vue";
+import UpcomingCarousel from "../components/UpcomingCarousel.vue";
 export default {
   name: "HomePage",
   components: {
@@ -10,6 +11,7 @@ export default {
     TrendingGamesCarousel,
     Experience,
     LiveStreaming,
+    UpcomingCarousel,
   },
   data() {
     return {
@@ -34,16 +36,14 @@ export default {
 
 <template>
   <main>
-    <!-- Jumbotron Section -->
     <Jumbotron :jumboImages="jumboImages" :text="jumboText" />
-    <!-- Trending Games Section with Carousel -->
+
     <div class="trending-games">
       <div class="container">
         <div class="col-6">
           <h3>Trending Games</h3>
           <h1>Choose Who Is The Best In World!</h1>
         </div>
-        <!-- Carousel -->
         <TrendingGamesCarousel
           :teams="gameTeams"
           :titles="gameTitles"
@@ -54,9 +54,13 @@ export default {
     <div class="experience">
       <Experience image="/img/ab/ab-three.png" />
     </div>
-    <div class="live"><LiveStreaming /></div>
+    <div class="live">
+      <LiveStreaming />
+    </div>
     <div class="trending"><h2>Trending Battle</h2></div>
-    <div class="upcoming"><h2>Upcoming Match</h2></div>
+    <div class="upcoming">
+      <UpcomingCarousel />
+    </div>
     <div class="shop"><h2>Gamers Shop</h2></div>
     <div class="team"><h2>Team Members</h2></div>
     <div class="features"><h2>Our Extreme Features</h2></div>
@@ -108,8 +112,26 @@ export default {
   }
 }
 
+.upcoming {
+  padding-top: 130px;
+  padding-bottom: 100px;
+  background-image: url(img/background/upcoming.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(26, 25, 53, 0.603);
+    z-index: 1;
+  }
+}
+
 .trending,
-.upcoming,
 .shop,
 .team,
 .features,

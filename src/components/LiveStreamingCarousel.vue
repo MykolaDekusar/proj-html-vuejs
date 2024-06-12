@@ -106,16 +106,6 @@ export default {
 }
 
 .game-info {
-  // color: #ffffff;
-  // position: sticky;
-  // bottom: 60px;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // background-color: $bg-cards;
-  // padding: 10px;
-  // max-width: 250px; // Ensure max width for the content
-  // height: 100px;
   padding-top: 18px;
   padding-left: 7px;
 }
