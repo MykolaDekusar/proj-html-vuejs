@@ -1,14 +1,17 @@
 <script>
 import ModaleComponent from './ModaleComponent.vue';
+import CartComponent from './CartComponent.vue';
 
 export default {
   name: "HeaderComponent",
   components: {
     ModaleComponent,
+    CartComponent,
   },
     data(){
       return {
         currentModale: null,
+        cartModale: false,
         logo: '/img/logo/menulogo.png',
         menus: [
           {
@@ -92,8 +95,25 @@ export default {
             url: '/about',
           },
           {
-            name: 'contect',
-            url: '/contect',
+            name: 'contact',
+            url: '/contact',
+          },
+        ],
+        carts: [
+          {
+            name: 'Sony PS5 White',
+            price: 254,
+            image: './img/shop/s1.png'
+          },
+          {
+            name: 'A4 Tec Mouse',
+            price: 121,
+            image: './img/shop/s2.png'
+          },
+          {
+            name: 'Gear VR Led',
+            price: 514,
+            image: './img/shop/s3.png'
           },
         ]
       }
@@ -104,7 +124,12 @@ export default {
       },
       modaleOff() {
         this.currentModale = null;
-
+      },
+      cartOn(){
+        this.cartModale = true;
+      },
+      cartOff() {
+        this.cartModale = false;
       }
     }
 };
@@ -153,21 +178,31 @@ export default {
               <img :src="logo" alt="">
             </a>
           </div>
-          <div class="menu col-9">
+          <div class="menu col-7">
             <ul>
-              <li v-for="(menu, index) in menus" :key="index">
-                <a :href="menu.url"
-                @mouseenter="modaleOn(menu.subMenu)"
-                @mouseleave="modaleOff()"                
-                >{{ menu.name }}
+              <li v-for="(menu, index) in menus" :key="index" @mouseenter="modaleOn(menu.subMenu)"
+                @mouseleave="modaleOff()">
+                <a :href="menu.url">{{ menu.name }}
                   <i v-show="menu.subMenu" class="fas fa-angle-down"></i>
-                  <ModaleComponent v-if="currentModale === menu.subMenu"
-                  :subMenu="menu.subMenu"/>
-                  </a>
+                  <ModaleComponent v-if="currentModale === menu.subMenu" :subMenu="menu.subMenu" />
+                </a>
               </li>
             </ul>
-          </div>
-
+            </div>
+            <div class="search col-2">
+              <ul>
+                <li>
+                  <a href=""><i class="fas fa-magnifying-glass"></i></a></li>
+                <li @mouseenter="cartOn"
+                    @mouseleave="cartOff">
+                  <a href=""><i class="fas fa-cart-shopping"></i></a>
+                  <span>{{ carts.length }}</span>
+                  <CartComponent v-if="cartModale"
+                  :products="carts"/>
+                </li>
+              </ul>
+            </div>
+            
 
 
           <!-- <div v-for="(menu, idx) in menus" :key="idx">
@@ -285,9 +320,11 @@ header {
     padding-right: 20px;
   }
   nav {
-    justify-content: center;
+    width: 100%;
+    // justify-content: space-between;
     align-items: center;
     .menu {
+      
       text-transform: uppercase;
       ul {
         display: block;
@@ -305,6 +342,48 @@ header {
     
       }
   
+    }
+    .search {
+      display: flex;
+      justify-content: end;
+     
+
+      ul {
+
+        li {
+          padding: 5px;
+          display: inline-block;
+          align-items: center;
+          position: relative;
+          a {
+              display: inline-block;
+              width: 50px;
+              height: 50px;
+              text-align: center;
+              border-radius: 50%;
+              margin-right: 10px;
+              line-height: 50px;
+              font-size: 20px;
+              color: $bottom-menu;
+              background-color: $text-primary;
+              transition: all 0.3s;
+          }
+          span {
+            width: 25px;
+            height: 25px;
+            font-size: 15px;
+            line-height: 25px;
+            text-align: center;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            right: 10px;
+            background-color: $bg-number-cart;
+            color: $text-primary;
+            border-radius: 50%;
+          }
+        }
+      }
     }
   }
 }
