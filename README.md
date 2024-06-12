@@ -1,6 +1,6 @@
-# Template Vite Vue
+# RaxG - Games, Clans & eSports Website
 
-Template di partenza per progetti Vite Vue con store.js e axios
+Realizzazione di 3 pagine dinamiche di un sito di eSports con l'utilizzo della funzione router di Vue
 
 ## Installazione
 
