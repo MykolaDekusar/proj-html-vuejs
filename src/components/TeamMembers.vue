@@ -1,7 +1,7 @@
 <script>
 import { Carousel, Navigation, Slide } from "vue3-carousel";
 export default {
-  name: "ShopCarousel",
+  name: "TeamMembers",
 
   components: {
     Carousel,
@@ -10,7 +10,19 @@ export default {
   },
   data() {
     return {
-      products: [1, 2, 3, 4],
+      team: [1, 2, 3, 4],
+      teamNames: [
+        "Cristiano Messi",
+        "Sergio Naymer",
+        "Antonella Roccuzzo",
+        "Lionel Ramos",
+      ],
+      teamRoles: [
+        "CEO/Founder",
+        "Programmer",
+        "Project Manager",
+        "Game Designer",
+      ],
       settings: {
         snapAlign: "left",
       },
@@ -22,8 +34,8 @@ export default {
 <template>
   <div class="container">
     <div class="col-6">
-      <h3>Gamer Shop</h3>
-      <h1>Explore Our Shop</h1>
+      <h3>Team Members</h3>
+      <h1>Our Experts Team Members</h1>
     </div>
     <div class="carousel-container">
       <Carousel
@@ -32,49 +44,43 @@ export default {
         v-bind="settings"
         :wrap-around="true"
       >
-        <Slide v-for="(image, index) in products" :key="index">
+        <Slide v-for="(image, index) in team" :key="index">
           <div class="carousel__item">
             <div class="card">
-              <div class="img-box">
-                <div class="thumb">
-                  <img
-                    :src="`/img/shop/s${image}.png`"
-                    :alt="`shop-s${image}.png`"
-                    class="img-fluid"
-                  />
-                  <ul class="soc-team">
-                    <li>
-                      <a href="assets/images/shop/s3.png" class="bg-blue">
-                        <i class="fa-solid fa-eye"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0" class="bg-green">
-                        <i class="fa-solid fa-cart-flatbed"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0" class="bg-blue">
-                        <i class="fa-solid fa-heart"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              <div class="thumb">
+                <img
+                  :src="`/img/teamMembers/team${image}.png`"
+                  :alt="`teamMembers-team${image}.png`"
+                  class="img-fluid"
+                />
+                <ul class="soc-team">
+                  <li>
+                    <a href="assets/images/shop/s3.png" class="bg-blue">
+                      <i class="fab fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#0" class="bg-green">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#0" class="bg-blue">
+                      <i class="fab fa-linkedin"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#0" class="bg-blue">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                  </li>
+                </ul>
               </div>
               <div class="item-info">
                 <div class="content">
                   <div class="cont">
-                    <div class="stars">
-                      <i class="fas fa-star-half-stroke green"></i>
-                      <i class="fas fa-star-half-stroke green"></i>
-                      <i class="fas fa-star-half-stroke"></i>
-                      <i class="fas fa-star-half-stroke"></i>
-                    </div>
-                    <h6 class="title">Asus Rog Strix A53</h6>
-                    <div class="price">
-                      <span class="green">$970.00 </span>
-                      <span>$999.00</span>
-                    </div>
+                    <h4 class="title">{{ teamNames[index] }}</h4>
+                    <h6 class="role">{{ teamRoles[index] }}</h6>
                   </div>
                 </div>
               </div>
@@ -109,7 +115,8 @@ export default {
   z-index: 10;
 }
 .col-6 {
-  text-align: center;
+  text-align: left;
+  padding-left: 10px;
   h1 {
     margin-top: 10px;
     color: #fff;
@@ -124,16 +131,26 @@ export default {
     margin-bottom: 10px;
   }
 }
+.thumb {
+  position: relative;
 
-.soc-team {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 13px;
-  left: 13px;
-  opacity: 0;
-  transition: all 0.3s;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .soc-team {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 15px;
+    left: 35px;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 10;
+  }
 
   li {
     margin-right: 9px;
@@ -162,22 +179,11 @@ export default {
   background-color: transparent;
   border: none;
   padding: 20px;
-}
-.img-box {
-  padding: 30px 45px;
-  background: #1a1935;
-  border-radius: 8px;
   &:hover .soc-team {
     opacity: 1;
   }
-  .thumb {
-    height: 200px;
-    position: relative;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+  &:hover .item-info {
+    background-color: #00ac4d;
   }
 }
 .green {
@@ -193,13 +199,12 @@ export default {
   margin-bottom: 7px;
 }
 .content {
-  text-align: left;
+  text-align: center;
   color: #ffffff;
-  font-weight: 800;
+
   .title {
-    margin-bottom: 0;
-    font-size: 24px;
-    font-weight: 800;
+    margin-bottom: 5px;
+    font-size: 20px;
   }
 }
 .carousel-container {
@@ -236,7 +241,8 @@ export default {
 }
 
 .item-info {
-  padding: 1px;
+  background-color: $bg-cards;
+  padding: 25px 0;
 }
 .logo {
   background-color: $bg-socials;

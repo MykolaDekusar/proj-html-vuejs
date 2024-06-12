@@ -186,10 +186,18 @@ h3 {
     padding: 12px 30px;
     background: #05cc7c;
     text-transform: capitalize;
-    border: 1px solid #00ac4d;
+    border: 1px solid;
     font-size: 16px;
     transition: all 0.3s;
     margin-bottom: 10px;
+    &:hover {
+      color: #00ac4d;
+      cursor: pointer;
+      background-color: transparent;
+      border: 1px solid #00ac4d;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
   }
 }
 .col-6 {
@@ -217,7 +225,7 @@ h3 {
   right: -15px;
   font-size: 18px;
   padding: 5px;
-  background-color: $bg-green-primary;
+  background-color: $text-secondary;
   border-radius: 50%;
   color: #ffffff;
 }

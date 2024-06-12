@@ -130,6 +130,13 @@ export default {
     background-color: $bg-green-primary;
     color: $bg-primary;
     font-weight: 900;
+    border: 1px solid transparent;
+    &:hover {
+      display: inline-block;
+      background-color: $bg-btn-secondary;
+      border: 1px solid $bg-btn-primary;
+      color: $bg-btn-primary;
+    }
   }
 
   .play {

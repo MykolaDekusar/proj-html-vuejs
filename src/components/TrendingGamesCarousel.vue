@@ -90,7 +90,7 @@ export default {
   top: -210px;
   font-size: 18px;
   padding: 5px;
-  background-color: $bg-green-primary;
+  background-color: $text-secondary;
   border-radius: 50%;
   color: #ffffff;
 }

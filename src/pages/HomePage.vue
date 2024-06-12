@@ -5,6 +5,7 @@ import Experience from "../components/Experience.vue";
 import LiveStreaming from "../components/LiveStreaming.vue";
 import UpcomingCarousel from "../components/UpcomingCarousel.vue";
 import ShopCarousel from "../components/ShopCarousel.vue";
+import TeamMembers from "../components/TeamMembers.vue";
 export default {
   name: "HomePage",
   components: {
@@ -14,6 +15,7 @@ export default {
     LiveStreaming,
     UpcomingCarousel,
     ShopCarousel,
+    TeamMembers,
   },
   data() {
     return {
@@ -64,7 +66,7 @@ export default {
       <UpcomingCarousel />
     </div>
     <div class="shop"><ShopCarousel /></div>
-    <div class="team"><h2>Team Members</h2></div>
+    <div class="team"><TeamMembers /></div>
     <div class="features"><h2>Our Extreme Features</h2></div>
     <div class="news"><h2>Latest News</h2></div>
   </main>
@@ -152,8 +154,13 @@ export default {
   }
 }
 
+.team {
+  padding-top: 130px;
+  padding-bottom: 100px;
+  background-color: $bg-primary;
+}
+
 .trending,
-.team,
 .features,
 .news {
   height: 500px;
@@ -162,7 +169,6 @@ export default {
 
 .live,
 .upcoming,
-.team,
 .news {
   background-color: rgb(56, 42, 243);
 }
