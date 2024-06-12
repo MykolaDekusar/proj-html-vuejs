@@ -8,7 +8,7 @@ export default {
   },
     data(){
       return {
-        modale: false,
+        currentModale: null,
         logo: '/img/logo/menulogo.png',
         menus: [
           {
@@ -16,11 +16,19 @@ export default {
             url: '/',
             subMenu: [
               {
-                name: 'home1',
+                name: 'home uno',
                 url: '/home1',
               },
               {
-                name: 'home2',
+                name: 'home due',
+                url: '/home2',
+              },
+              {
+                name: 'home tre',
+                url: '/home2',
+              },
+              {
+                name: 'home quattro',
                 url: '/home2',
               },
             ]
@@ -30,11 +38,15 @@ export default {
             url: '/pagine',
             subMenu: [
               {
-                name: 'pagine1',
+                name: 'pagine uno',
                 url: '/pagine1',
               },
               {
-                name: 'pagine2',
+                name: 'pagine due',
+                url: '/pagine2',
+              },
+              {
+                name: 'pagine tre',
                 url: '/pagine2',
               },
             ]
@@ -48,11 +60,15 @@ export default {
             url: '/negozio',
             subMenu: [
               {
-                name: 'negozio1',
+                name: 'negozio uno',
                 url: '/negozio1',
               },
               {
-                name: 'negozio2',
+                name: 'negozio due',
+                url: '/negozio2',
+              },
+              {
+                name: 'negozio tre',
                 url: '/negozio2',
               },
             ]
@@ -62,11 +78,11 @@ export default {
             url: '/blog',
             subMenu: [
               {
-                name: 'blog1',
+                name: 'blog uno',
                 url: '/blog1',
               },
               {
-                name: 'blog2',
+                name: 'blog due',
                 url: '/blog2',
               },
             ]
@@ -83,11 +99,11 @@ export default {
       }
     },
     methods: {
-      modaleOn(data) {
-        this.modale = true;
+      modaleOn(subMenu) {
+        this.currentModale = subMenu;
       },
       modaleOff() {
-        this.modale = false;
+        this.currentModale = null;
 
       }
     }
@@ -140,12 +156,14 @@ export default {
           <div class="menu col-9">
             <ul>
               <li v-for="(menu, index) in menus" :key="index">
-                <ModaleComponent v-if="modale"/>
                 <a :href="menu.url"
                 @mouseenter="modaleOn(menu.subMenu)"
                 @mouseleave="modaleOff()"                
                 >{{ menu.name }}
-                   <i v-show="menu.subMenu" class="fas fa-angle-down"></i></a>
+                  <i v-show="menu.subMenu" class="fas fa-angle-down"></i>
+                  <ModaleComponent v-if="currentModale === menu.subMenu"
+                  :subMenu="menu.subMenu"/>
+                  </a>
               </li>
             </ul>
           </div>
@@ -280,11 +298,9 @@ header {
           a {
             position: relative;
             color: $text-primary;
-            &:hover {
-
-            }
             
-        }
+            
+          }
         }
     
       }
