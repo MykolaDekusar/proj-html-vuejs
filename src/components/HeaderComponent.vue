@@ -1,8 +1,14 @@
 <script>
+import ModaleComponent from './ModaleComponent.vue';
+
 export default {
   name: "HeaderComponent",
+  components: {
+    ModaleComponent,
+  },
     data(){
       return {
+        modale: false,
         logo: '/img/logo/menulogo.png',
         menus: [
           {
@@ -75,6 +81,15 @@ export default {
           },
         ]
       }
+    },
+    methods: {
+      modaleOn(data) {
+        this.modale = true;
+      },
+      modaleOff() {
+        this.modale = false;
+
+      }
     }
 };
 </script>
@@ -125,7 +140,12 @@ export default {
           <div class="menu col-9">
             <ul>
               <li v-for="(menu, index) in menus" :key="index">
-                <a :href="menu.url">{{ menu.name }} <i v-show="menu.subMenu" class="fas fa-angle-down"></i></a>
+                <ModaleComponent v-if="modale"/>
+                <a :href="menu.url"
+                @mouseenter="modaleOn(menu.subMenu)"
+                @mouseleave="modaleOff()"                
+                >{{ menu.name }}
+                   <i v-show="menu.subMenu" class="fas fa-angle-down"></i></a>
               </li>
             </ul>
           </div>
@@ -258,7 +278,11 @@ header {
           margin-right: 25px;
           
           a {
+            position: relative;
             color: $text-primary;
+            &:hover {
+
+            }
             
         }
         }
