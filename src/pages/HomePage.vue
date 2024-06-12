@@ -133,6 +133,25 @@ export default {
   }
 }
 
+.shop {
+  padding-top: 130px;
+  padding-bottom: 100px;
+  background-image: url(img/background/shop-bg.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(26, 25, 53, 0.603);
+    z-index: 1;
+  }
+}
+
 .trending,
 .team,
 .features,
