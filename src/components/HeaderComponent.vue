@@ -1,6 +1,81 @@
 <script>
 export default {
   name: "HeaderComponent",
+    data(){
+      return {
+        logo: '/img/logo/menulogo.png',
+        menus: [
+          {
+            name: 'home',
+            url: '/',
+            subMenu: [
+              {
+                name: 'home1',
+                url: '/home1',
+              },
+              {
+                name: 'home2',
+                url: '/home2',
+              },
+            ]
+          },
+          {
+            name: 'pagine',
+            url: '/pagine',
+            subMenu: [
+              {
+                name: 'pagine1',
+                url: '/pagine1',
+              },
+              {
+                name: 'pagine2',
+                url: '/pagine2',
+              },
+            ]
+          },
+          {
+            name: 'torneo',
+            url: '/torneo',
+          },
+          {
+            name: 'negozio',
+            url: '/negozio',
+            subMenu: [
+              {
+                name: 'negozio1',
+                url: '/negozio1',
+              },
+              {
+                name: 'negozio2',
+                url: '/negozio2',
+              },
+            ]
+          },
+          {
+            name: 'blog',
+            url: '/blog',
+            subMenu: [
+              {
+                name: 'blog1',
+                url: '/blog1',
+              },
+              {
+                name: 'blog2',
+                url: '/blog2',
+              },
+            ]
+          },
+          {
+            name: 'about',
+            url: '/about',
+          },
+          {
+            name: 'contect',
+            url: '/contect',
+          },
+        ]
+      }
+    }
 };
 </script>
 
@@ -39,9 +114,31 @@ export default {
 
       </div>
       <!-- /parte alta del menu -->
-       <!-- parte bassa del menu -->
+      <!-- parte bassa del menu -->
       <div class="bottom-header">
-        <div class="row"></div>
+        <nav class="nav row">
+          <div class="logo col-3">
+            <a href="/">
+              <img :src="logo" alt="">
+            </a>
+          </div>
+          <div class="menu col-9">
+            <ul>
+              <li v-for="(menu, index) in menus" :key="index">
+                <a :href="menu.url">{{ menu.name }} <i v-show="menu.subMenu" class="fas fa-angle-down"></i></a>
+              </li>
+            </ul>
+          </div>
+
+
+
+          <!-- <div v-for="(menu, idx) in menus" :key="idx">
+            <h3> {{ menu. }}</h3>
+
+          </div> -->
+
+
+        </nav>
       </div>
 
 
@@ -55,7 +152,7 @@ export default {
 @use '../assets/scss/partials/extend' as *;
 
 *{margin: 0;padding: 0;}
-a{text-decoration: none;}
+a{text-decoration: none; }
 li{list-style-type: none;}
 
 
@@ -71,7 +168,7 @@ header {
 
   .top-header {
     background-color: $top-menu;
-    padding: 8px 20px 10px;;
+    padding: 8px 20px 10px;
     height: 40%;
     .top-left {
       justify-content: start;
@@ -133,14 +230,44 @@ header {
         margin-left: 15px;
         @extend %btn;
         padding: 10px 20px;
-        border-radius: 8px;
+        border-radius: 5px;
+        font-weight: 700;
       }
     }
 
   }
+
   .bottom-header {
+    padding: 8px 20px 10px;
     background-color: $bg-primary;
     height: 50%;
+    display: flex;
+  }
+  .logo {
+    padding-right: 20px;
+  }
+  nav {
+    justify-content: center;
+    align-items: center;
+    .menu {
+      text-transform: uppercase;
+      ul {
+        display: block;
+        li {
+          display: inline-block;
+          margin-right: 25px;
+          
+          a {
+            color: $text-primary;
+            
+        }
+        }
+    
+      }
+  
+    }
   }
 }
+
+
 </style>
