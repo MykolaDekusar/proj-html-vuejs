@@ -66,6 +66,7 @@ export default {
 </script>
 
 <template>
+  
    <section class="team-icons">
     <div class="container">
       <Carousel class="row-outer" v-bind="settings" :items-to-show="6"  :wrap-around="true">
@@ -127,6 +128,17 @@ export default {
   transform: translateY(115px);
   position: relative;
   z-index: 1;
+}
+
+.team-icons::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  background-color: $bottom-menu;
+  transform: translateY(-115px);
 }
 .row-outer{
   background-color:$bg-tertiary;

@@ -8,6 +8,27 @@ export default {
    components: {
     BannerComponent,
    },
+   data(){
+      return{
+         cards:[
+            {
+               title:'Phone Number',
+               data:'+880 130 309 8032',
+               icon:'phone'
+            },
+            {
+               title:'Email Address',
+               data:'example@gmail.com',
+               icon:'envelope'
+            },
+            {
+               title:'Address',
+               data:'69/6 Broklyn Street, New York city, United States of America',
+               icon:'location-pin'
+            },
+         ]
+      }
+   }
 }
 </script>
 <!-- HTML -->
@@ -23,26 +44,11 @@ export default {
                 consequatur accusamus reprehenderit voluptates, nam quas nesciunt repudiandae amet?
             </p>
             </div>
-            <div class="phone-number hover-me">
-               <div class="quote-icon"><i class="fa-solid fa-phone"></i></div>
+            <div v-for="data in cards" class="phone-number hover-me">
+               <div class="quote-icon"><i :class="`fa-solid fa-${data.icon}`"></i></div>
                <div >
-                  <h3>Phone Number</h3>
-                  <p>+880 130 309 8032 </p>
-                  <p>+880 130 309 8032 </p>
-               </div>
-            </div>
-            <div class="email-address hover-me">
-               <div class="quote-icon"><i class="fa-solid fa-envelope"></i></div>
-               <div >
-                  <h3>Email Address</h3>
-                  <p>example@gmail.com </p>
-               </div>
-            </div>
-            <div class="address hover-me">
-               <div class="quote-icon"><i class="fa-solid fa-location-pin"></i></div>
-               <div >
-                  <h3>Address</h3>
-                  <p>69/6 Broklyn Street, New York city, United States of America</p>
+                  <h3>{{ data.title }}</h3>
+                  <p>{{ data.data }}</p>
                </div>
             </div>
          </div>
@@ -113,9 +119,7 @@ export default {
    }
 }
 
-.phone-number,
-.email-address,
-.address{
+.phone-number{
    display: flex;
    align-items: center;
    padding: 1rem;
