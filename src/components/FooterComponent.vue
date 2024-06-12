@@ -14,6 +14,52 @@ export default {
         snapAlign:'left',
       },
       teamIcons:10,
+      footerInfo:{
+        quickLinks:{
+          title:'Quick Links',
+          list:['Home', 'Pages', 'Tournament', 'Shop', 'Blog', 'Contact'],
+        },
+        ourServices:{
+          title:'Our Services',
+          list:['About Us', 'Latest Tournament', 'Upcoming Game', 'Faqs', 'Privacy', 'Terms & Conditions']
+        },
+      },
+      
+      socials:[{
+        name:'facebook',
+        link:'https://www.facebook.com/',
+      },{
+        name:'twitter',
+        link:'https://www.twitter.com/',
+      },{
+        name:'instagram',
+        link:'https://www.instagram.com/',
+      },{
+        name:'linkedin',
+        link:'https://www.linkedin.com/',
+      }],
+
+      contacts:{
+        title:'Contact Us',
+        info:[
+        {
+        name:'69 Broklyn Street, New York city, United States of America',
+        link:'/contact',
+        icon:'location-pin'
+      },{
+        name:'+880 222 333 2580 ',
+        link:'/contact',
+        icon:'phone'
+      },{
+        name:'example@gmail.com ',
+        link:'/contact',
+        icon:'envelope'
+      },{
+        name:'www.example.com ',
+        link:'/contact',
+        icon:'globe'
+      }
+      ]},
     }
   },
 };
@@ -42,47 +88,31 @@ export default {
             <button type="submit">Subscribe</button>
           </form>
           <ul class="socials">
-            <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
-            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
-            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
-            <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+            <li v-for="icon in socials"><a target="_blank" :href="icon.link"><i :class="`fa-brands fa-${icon.name}`"></i></a></li>
           </ul>
         </div>
         <div class="col-xl-2 col-lg-6 col-md-6 col-sm-8">
-          <h4 class="mt-3">Quick Links</h4>
+          <h4 class="mt-3">{{footerInfo.quickLinks.title}}</h4>
           <ul class="quick-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="">Pages</a></li>
-            <li><a href="">Tournament</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">Contact</a></li>
+            <li v-for="item in footerInfo.quickLinks.list"><a href="/">{{ item }}</a></li>
           </ul>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-8">
-          <h4 class="mt-3">Our Services</h4>
+          <h4 class="mt-3">{{footerInfo.ourServices.title}}</h4>
           <ul class="our-services">
-            <li><a href="/about">About us</a></li>
-            <li><a href="">Latest Turnament</a></li>
-            <li><a href="">Upcoming Game</a></li>
-            <li><a href="">Faqs</a></li>
-            <li><a href="">Pricacy</a></li>
-            <li><a href="">Terms & Conditions</a></li>
+            <li v-for="item in footerInfo.ourServices.list"><a href="/about">{{ item }}</a></li>
           </ul>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-8">
-          <h4 class="mt-3">Contact Us</h4>
+          <h4 class="mt-3">{{ contacts.title }}</h4>
           <ul class="contact-us">
-            <li><i class="fa-solid fa-location-pin"></i><a href="/contact">69 Broklyn Street, New York city, United States of America</a></li>
-            <li><i class="fa-solid fa-phone"></i><a href="">+880 222 333 2580 </a></li>
-            <li><i class="fa-solid fa-envelope"></i><a href="">example@gmail.com </a></li>
-            <li><i class="fa-solid fa-globe"></i><a href="">www.example.com </a></li>
+            <li v-for="item in contacts.info"><i :class="`fa-solid fa-${item.icon}`"></i><a :href="item.link">{{ item.name }}</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Copyright RaxG | Designed by <a href="https://www.instagram.com/draeknes/">Draeknes</a></p>
+      <p>Copyright RaxG | Designed by <a href="" target="_blank" rel="noopener noreferrer">Team 3</a></p>
     </div>
   </footer>
 </template>
@@ -129,7 +159,7 @@ footer {
       border: none;
       height: 45px;
       padding: 2px 15px;
-      width: 200px;
+      width: 175px;
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
       color: white;
@@ -203,7 +233,7 @@ h4{
 }
 .contact-us li:first-child{
   svg {
-    width: 45px;
+    width: 35px;
   }
 }
 
