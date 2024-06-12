@@ -1,11 +1,13 @@
 <script>
 import Jumbotron from "../components/Jumbotron.vue";
 import TrendingGamesCarousel from "../components/TrendingGamesCarousel.vue";
+import Experience from "../components/Experience.vue";
 export default {
   name: "HomePage",
   components: {
     Jumbotron,
     TrendingGamesCarousel,
+    Experience,
   },
   data() {
     return {
@@ -47,7 +49,9 @@ export default {
         />
       </div>
     </div>
-    <div class="experience"><h2>12 Years Experience</h2></div>
+    <div class="experience">
+      <Experience image="/img/ab/ab-three.png" />
+    </div>
     <div class="live"><h2>Live Streaming</h2></div>
     <div class="trending"><h2>Trending Battle</h2></div>
     <div class="upcoming"><h2>Upcoming Match</h2></div>
@@ -80,7 +84,10 @@ export default {
   padding-bottom: 80px;
 }
 
-.experience,
+.experience {
+  background-color: $bg-tertiary;
+}
+
 .live,
 .trending,
 .upcoming,
@@ -99,7 +106,6 @@ export default {
   background-color: rgb(56, 42, 243);
 }
 
-.experience,
 .trending,
 .shop,
 .features {
