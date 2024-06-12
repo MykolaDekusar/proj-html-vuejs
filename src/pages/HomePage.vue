@@ -2,12 +2,14 @@
 import Jumbotron from "../components/Jumbotron.vue";
 import TrendingGamesCarousel from "../components/TrendingGamesCarousel.vue";
 import Experience from "../components/Experience.vue";
+import LiveStreaming from "../components/LiveStreaming.vue";
 export default {
   name: "HomePage",
   components: {
     Jumbotron,
     TrendingGamesCarousel,
     Experience,
+    LiveStreaming,
   },
   data() {
     return {
@@ -52,7 +54,7 @@ export default {
     <div class="experience">
       <Experience image="/img/ab/ab-three.png" />
     </div>
-    <div class="live"><h2>Live Streaming</h2></div>
+    <div class="live"><LiveStreaming /></div>
     <div class="trending"><h2>Trending Battle</h2></div>
     <div class="upcoming"><h2>Upcoming Match</h2></div>
     <div class="shop"><h2>Gamers Shop</h2></div>
@@ -88,7 +90,24 @@ export default {
   background-color: $bg-tertiary;
 }
 
-.live,
+.live {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  background-image: url(img/background/live-streming-bg.png);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(26, 25, 53, 0.603);
+    z-index: 1;
+  }
+}
+
 .trending,
 .upcoming,
 .shop,

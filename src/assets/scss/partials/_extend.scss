@@ -3,48 +3,47 @@ EXTEND
 ******/
 
 // import variables:
-@use './variables' as *;
-
+@use "./variables" as *;
 
 // bottone play video:
 %play {
-    width: 60px;
-    height: 60px;
-    vertical-align: middle;
-    background-color: $bg-green-primary;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+  background-color: $bg-green-primary;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    a {
-        .fa-play {
-            display: inline-block;
-            text-align: center;
-            font-size: 22px;
-            color: $bg-btn-secondary;
-        }
-
+  a {
+    .fa-play {
+      display: inline-block;
+      text-align: center;
+      font-size: 22px;
+      padding-top: 4px;
+      padding-left: 2px;
+      color: $bg-btn-secondary;
     }
-
+  }
 }
 
 // bottone verde:
 %btn {
-    background-color: $bg-green-primary;
-    padding: 15px 25px;
-    color: $bg-btn-secondary;
-    cursor: pointer;
-    transition: all .3s;
+  background-color: $bg-green-primary;
+  padding: 15px 25px;
+  color: $bg-btn-secondary;
+  cursor: pointer;
+  transition: all 0.3s;
 
-    .fa-arrow-right {
-        margin-left: 5px;
-        color: inherit;
-    }
+  .fa-arrow-right {
+    margin-left: 5px;
+    color: inherit;
+  }
 
-    &:hover {
-        background-color: $bg-btn-secondary;
-        border: 1px solid $bg-btn-primary;
-        color: $bg-btn-primary;
-    }
+  &:hover {
+    background-color: $bg-btn-secondary;
+    border: 1px solid $bg-btn-primary;
+    color: $bg-btn-primary;
+  }
 }
