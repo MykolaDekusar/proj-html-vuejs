@@ -302,6 +302,15 @@ section {
    padding-bottom: 50px;
    background-image: url(img/background/live-streming-bg.png);
    position: relative;
+   &::before {
+         position: absolute;
+         content: "";
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background: rgba(26, 25, 53, 0.6);
+      }
 }
 
 // component TrendingGamesCarousel:
@@ -311,7 +320,6 @@ section {
    font-weight: 600;
    color: #ffffff;
 }
-
 .trending-games .col-6 h3 {
    font-size: 18px;
    font-weight: 600;
@@ -320,13 +328,13 @@ section {
    margin-bottom: 10px;
    text-transform: capitalize;
 }
-
 .trending-games {
    background-color: $bg-primary;
    padding-top: 100px;
    padding-bottom: 80px;
 }
 
+// coponent Lates News:
 .news {
    background-color: $bg-primary;
    margin: 0 auto;
