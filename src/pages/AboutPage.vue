@@ -4,7 +4,7 @@ import TeamMembers from "../components/TeamMembers.vue";
 import LiveStreaming from "../components/LiveStreaming.vue";
 import TrendingGamesCarousel from "../components/TrendingGamesCarousel.vue";
 import ExtremFeatureComponent from '../components/ExtremFeatureComponent.vue';
-
+import LatestNewsComponent from "../components/LatestNewsComponent.vue";
 
 export default {
    nome: 'AboutPage',
@@ -29,6 +29,7 @@ export default {
       LiveStreaming,
       TrendingGamesCarousel,
       ExtremFeatureComponent,
+      LatestNewsComponent,
    }
 }
 
@@ -119,6 +120,11 @@ export default {
    </div>
 
    <div class="extrim-feat"> <ExtremFeatureComponent/> </div>
+
+   
+      <div class="news"><LatestNewsComponent /></div>
+
+  
 
 </template>
 
@@ -321,8 +327,9 @@ section {
    padding-bottom: 80px;
 }
 
-.extrim-feat {
-   
+.news {
+   background-color: $bg-primary;
+   margin: 0 auto;
 }
 
 

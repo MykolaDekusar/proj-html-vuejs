@@ -124,6 +124,7 @@ section {
             padding: 35px 25px 50px;
             background-color: $bg-feature-square;
             border-radius: 20px;
+            transition: all .5s;
             &:hover {
                 background-color: $bg-feature-hover;
             }
