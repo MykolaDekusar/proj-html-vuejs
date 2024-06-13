@@ -120,7 +120,8 @@ export default {
         ]
       }
     },
-    // property per cancellare la voce menu dalla pagina corrente:
+    // property per cancellare la voce menu dalla pagina corrente servendomi di filter e la rotta corrente che è aggiornata dalla proprietà $route:
+    // utilizzo della property perché viene calcolata in automatico solo quando un dato di una sua dipendenza cambia:
     computed: {
       filteredMenus() {
         return this.menus.filter(menu => menu.url !== this.$route.path);
@@ -146,14 +147,16 @@ export default {
         this.topHeaderVisible = window.scrollY < 100;
       }
     },
+    // dopo che monto la pagina mi metto in ascolto con l'eventListener sullo scroll:
     mounted() {
       window.addEventListener('scroll', this.handleScroll);
     },
+    // dopo che l'elemento è stato rimosso devo disattivare l'eventListener:
     beforeDestroy() {
       window.removeEventListener('scroll', this.handleScroll);
-    }
-    
+    }   
 };
+
 </script>
 
 <template>
@@ -202,6 +205,7 @@ export default {
           </div>
           <div class="menu col-4">
             <ul>
+              <!-- per iserire il logo a metà pagina devo dividere in due parti le voci del menù -->
               <li v-for="(menu, index) in filteredMenus.slice(0, 3)" :key="index" @mouseenter="modaleOn(menu.subMenu)"
                 @mouseleave="modaleOff()">
                 <a :href="menu.url">{{ menu.name }}
@@ -218,6 +222,7 @@ export default {
           </div>
           <div class="menu col-4">
             <ul>
+              <!-- dopo il logo inserisco con slice la seconda parte del menu -->
               <li v-for="(menu, index) in filteredMenus.slice(3)" :key="index" @mouseenter="modaleOn(menu.subMenu)"
                 @mouseleave="modaleOff()">
                 <a :href="menu.url">{{ menu.name }}
@@ -351,7 +356,7 @@ header {
         }
       }
     }
-    }
+  }
     .top-right {
       display: flex;
       align-items: center;
@@ -485,8 +490,7 @@ header {
               }
             }
           }   
-        }
-    
+        }    
         .search {
           display: flex;
           justify-content: end;
@@ -511,8 +515,7 @@ header {
                 color: $bottom-menu;
                 background-color: $text-primary;
                 transition: all 0.3s;
-              }
-    
+              }    
               span {
                 width: 25px;
                 height: 25px;
@@ -531,7 +534,6 @@ header {
           }
         }
       }
-
   }
 }
 

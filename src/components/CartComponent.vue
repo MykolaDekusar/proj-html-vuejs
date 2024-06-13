@@ -1,7 +1,5 @@
 <!-- JAVASCRIPT -->
 <script>
-// import:
-
 
 export default {
    nome: 'CartComponent',
@@ -14,11 +12,13 @@ export default {
       }
    },
    methods: {
+    // metodo per calcolare il prezzo totale del carrello:
     calculateSubtotale() {
         this.products.forEach(element => {
             this.subtotale += element.price;
         })
     },
+    // metodo per cancellare dal carrello il prodotto e aggiorna il prezzo:
     canc(index) {
         this.subtotale = 0;
         this.products.splice(index, 1);
@@ -65,7 +65,6 @@ export default {
             </li>
         </ul>
     </div>
-
 
 </template>
 
@@ -128,7 +127,6 @@ li{list-style-type: none;}
             @extend %btn;
             border: unset;
             border: 1px solid $bg-btn-primary;
-
         }
     }
 }

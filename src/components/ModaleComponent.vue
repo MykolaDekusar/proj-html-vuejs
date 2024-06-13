@@ -7,14 +7,6 @@ export default {
    props: {
       subMenu: Array,
    },
-   data(){
-      return{
-
-      }
-   },
-   components: {
-
-   }
 }
 
 </script>
@@ -30,8 +22,6 @@ export default {
          </li>
       </ul>
    </div>
-   <!-- <div v-for="(menu, index) in subMenu.name" :key="index">
-   </div> -->
 
 </template>
 
