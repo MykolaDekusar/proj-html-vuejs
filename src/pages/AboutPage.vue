@@ -1,6 +1,7 @@
 <!-- JAVASCRIPT -->
 <script>
 import TeamMembers from "../components/TeamMembers.vue";
+import LiveStreaming from "../components/LiveStreaming.vue";
 
 export default {
    nome: 'AboutPage',
@@ -14,6 +15,7 @@ export default {
    },
    components: {
       TeamMembers,
+      LiveStreaming,
    }
 }
 
@@ -88,21 +90,9 @@ export default {
       </div>
    </section>
    <div class="team"><TeamMembers /></div>
-   <!-- <section class="members">
-      <div class="container py-5">
-         <h3 class="pt-5">Team Members</h3>
-         <div class="row">
-            <div class="col-5">
-               <h2>Our Experts Team Members </h2>
-            </div>
-            <div class="col-3">
-
-            </div>
-         </div>
-
-      </div>
-   </section> -->
-
+   <div class="live"><LiveStreaming /></div>
+   
+   
 </template>
 
 
@@ -266,11 +256,20 @@ section {
       }
    }
 }
-
+// component TeamMembers:
 .team {
    padding-top: 130px;
    padding-bottom: 100px;
    background-color: $top-menu;
 }
+
+// component LiveStreaming:
+.live {
+   padding-top: 150px;
+   padding-bottom: 50px;
+   background-image: url(img/background/live-streming-bg.png);
+   position: relative;
+}
+
 
 </style>
