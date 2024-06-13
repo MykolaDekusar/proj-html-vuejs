@@ -1,7 +1,6 @@
 <!-- JAVASCRIPT -->
 <script>
-// import:
-// import nomeImport from 'nomeImport';
+import TeamMembers from "../components/TeamMembers.vue";
 
 export default {
    nome: 'AboutPage',
@@ -14,7 +13,7 @@ export default {
       }
    },
    components: {
-
+      TeamMembers,
    }
 }
 
@@ -77,7 +76,6 @@ export default {
                <div class="mb-4">
                   <button class="btn ">Discover More <i class="fas fa-arrow-right"></i></button>
                   <div class="play"> <a href=""><i class="fas fa-play"></i></a></div>
-
                </div>
             </div>
             <div class="col-6">
@@ -89,7 +87,8 @@ export default {
          </div>
       </div>
    </section>
-   <section class="members">
+   <div class="team"><TeamMembers /></div>
+   <!-- <section class="members">
       <div class="container py-5">
          <h3 class="pt-5">Team Members</h3>
          <div class="row">
@@ -102,9 +101,7 @@ export default {
          </div>
 
       </div>
-
-
-   </section>
+   </section> -->
 
 </template>
 
@@ -270,7 +267,10 @@ section {
    }
 }
 
-.members {
-   background-color: $bg-tertiary;
+.team {
+   padding-top: 130px;
+   padding-bottom: 100px;
+   background-color: $top-menu;
 }
+
 </style>
