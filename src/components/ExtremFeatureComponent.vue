@@ -127,6 +127,7 @@ section {
             transition: all .5s;
             &:hover {
                 background-color: $bg-feature-hover;
+                color: $top-menu;
             }
             &:hover .thumb {
                 transform: scale(1.08);
@@ -137,6 +138,7 @@ section {
             }
             &:nth-child(1) {
                 background-color: $bg-feature-hover;
+                color: $top-menu;
             }
         }
 
