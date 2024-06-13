@@ -296,7 +296,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 100;
   .container {
     text-align: center;
