@@ -6,6 +6,7 @@ import LiveStreaming from "../components/LiveStreaming.vue";
 import UpcomingCarousel from "../components/UpcomingCarousel.vue";
 import ShopCarousel from "../components/ShopCarousel.vue";
 import TeamMembers from "../components/TeamMembers.vue";
+import TrendingBattle from "../components/TrendingBattle.vue";
 export default {
   name: "HomePage",
   components: {
@@ -16,6 +17,7 @@ export default {
     UpcomingCarousel,
     ShopCarousel,
     TeamMembers,
+    TrendingBattle,
   },
   data() {
     return {
@@ -61,7 +63,9 @@ export default {
     <div class="live">
       <LiveStreaming />
     </div>
-    <div class="trending"><h2>Trending Battle</h2></div>
+    <div class="trending">
+      <TrendingBattle/>
+    </div>
     <div class="upcoming">
       <UpcomingCarousel />
     </div>
