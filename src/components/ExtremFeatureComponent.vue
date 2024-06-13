@@ -88,14 +88,26 @@ export default {
 @use '../assets/scss/partials/extend' as *;
 
 section {
+    position: relative;
     background-color: $bg-featur;
     background-image: url('../../public/img/vectorial/v1.png');
     background-repeat: no-repeat;
     background-position: center left;
     width: 100vw;
+    &::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 25, 53, .5);
+            z-index: 5;
+        }
     
     .container {
-
+        position: relative;
+        z-index: 10;
         height: 100%;
         .text {
             height: 100%;
@@ -134,7 +146,7 @@ section {
                 }
             &:nth-child(1),
             &:nth-child(3) {
-                margin-right: 15px;
+                margin-right: 20px;
             }
             &:nth-child(1) {
                 background-color: $bg-feature-hover;
