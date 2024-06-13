@@ -306,8 +306,8 @@ header {
   .top-header {
     background-color: $top-menu;
     padding: 8px 20px 10px;
-    height: 70px;
-    max-height: 200px;
+
+    max-height: 70px;
     overflow: hidden;
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
     &.hidden {
@@ -329,7 +329,7 @@ header {
             height: 40px;
             text-align: center;
             border-radius: 50%;
-            background-color: $bg-darkblue;
+            background-color: $bottom-menu;
             margin-right: 10px;         
             line-height: 40px;
             color: $text-primary;
@@ -392,7 +392,6 @@ header {
     }
     nav {
       width: 100%;
-      // justify-content: space-between;
       align-items: center;
       .menu {
         
