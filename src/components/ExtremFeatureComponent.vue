@@ -45,9 +45,9 @@ export default {
 <!-- HTML -->
 <template>
     <section>
-        <div class="container">
+        <div class="container  pt-5 pb-5">
             <div class="row text">
-                <div class="col-6">
+                <div class="col-5">
                     <h3 class="pt-5">12 Year Experience</h3>
                     <h1>The Best Gaming Arena On The World!</h1>
                     <p>Nulla quis lorem ut libero malesuada feugiat. Vivamus magna justo, lacinia eget consectetur sed,
@@ -56,13 +56,15 @@ export default {
 
                 </div>
 
-                <div class="col-6">
-                    <div class="row grid">
-                        <div class="col-6 square"
+                <div class="col-7">
+                    <div class="row g-3 grid">
+                        <div class="col-5 square"
                         v-for="(feature, index) in features" :key="index">
-                        <div class="thum"></div>
-                        <img :src="`/img/features/${feature.image}`" :alt="feature.name">
-                        <h3> {{ feature.name }}</h3>
+                        <div class="thumb">
+                            <img :src="`/img/features/${feature.image}`" 
+                            :alt="feature.name">
+                        </div>
+                        <h4> {{ feature.name }}</h4>
                         <p>{{ feature.info }}</p>
                         </div>
                         
@@ -86,18 +88,19 @@ export default {
 @use '../assets/scss/partials/extend' as *;
 
 section {
-    background-color: #191943;
+    background-color: $bg-featur;
     background-image: url('../../public/img/vectorial/v1.png');
     background-repeat: no-repeat;
     background-position: center left;
     width: 100vw;
-    height: 100vh;
+    
     .container {
+
         height: 100%;
         .text {
             height: 100%;
             display: flex;
-            justify-content: left;
+            justify-content: space-around;
             align-items: center;
         }
     }
@@ -114,16 +117,44 @@ section {
         text-align: start;
     }
     .grid {
-        padding: 20px;
+        margin: 30px;
+        justify-content: flex-end;
         .square {
+            text-align: center;
+            padding: 35px 25px 50px;
             background-color: $bg-feature-square;
             border-radius: 20px;
-            height: 200px;
-            border: 1px solid red;
+            &:hover {
+                background-color: $bg-feature-hover;
+            }
+            &:hover .thumb {
+                transform: scale(1.08);
+                }
+            &:nth-child(1),
+            &:nth-child(3) {
+                margin-right: 15px;
+            }
+            &:nth-child(1) {
+                background-color: $bg-feature-hover;
+            }
         }
 
     }
+    .thumb {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: $bg-tertiary;
+        line-height: 100px;
+        text-align: center;
+        margin: 0 auto 20px;
+        transition: all .5s;
+        
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
 }
-
-
 </style>
