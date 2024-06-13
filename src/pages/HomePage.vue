@@ -7,6 +7,7 @@ import UpcomingCarousel from "../components/UpcomingCarousel.vue";
 import ShopCarousel from "../components/ShopCarousel.vue";
 import TeamMembers from "../components/TeamMembers.vue";
 import TrendingBattle from "../components/TrendingBattle.vue";
+import Features from "../components/Features.vue";
 export default {
   name: "HomePage",
   components: {
@@ -18,6 +19,7 @@ export default {
     ShopCarousel,
     TeamMembers,
     TrendingBattle,
+    Features,
   },
   data() {
     return {
@@ -71,7 +73,7 @@ export default {
     </div>
     <div class="shop"><ShopCarousel /></div>
     <div class="team"><TeamMembers /></div>
-    <div class="features"><h2>Our Extreme Features</h2></div>
+    <div class="features"><Features /></div>
     <div class="news"><h2>Latest News</h2></div>
   </main>
 </template>
@@ -160,12 +162,16 @@ export default {
 .trending {
   background-color: $bg-primary;
 }
+
+.features {
+  background-color: $bg-tertiary;
+}
 .team {
   padding-top: 130px;
   padding-bottom: 100px;
   background-color: $bg-primary;
 }
-.features,
+
 .news {
   height: 500px;
   text-align: center;
@@ -177,8 +183,7 @@ export default {
   background-color: rgb(56, 42, 243);
 }
 
-.shop,
-.features {
+.shop {
   background-color: antiquewhite;
 }
 </style>
