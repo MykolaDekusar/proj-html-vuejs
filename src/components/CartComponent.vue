@@ -23,11 +23,12 @@ export default {
         this.subtotale = 0;
         this.products.splice(index, 1);
         this.calculateSubtotale()
-    }
+    },
    },
    created() {
     this.calculateSubtotale()
-   }
+   },
+   
 }
 
 </script>
@@ -89,15 +90,15 @@ li{list-style-type: none;}
     ul {
         padding: 8px 25px;
         li{
-            padding: 5px 0;
+            padding: 10px 0;
             .cart-list {
                 display: flex;
                 justify-content: space-between;
                 .image-cart {
-                    width: 55px;
-                    height: 40px;
+                    width: 80px;
+                    height: 55px;
                     border: 1px solid $bg-btn-primary;
-                    background-color: black;               
+                    background-color: $bottom-menu;               
                     img {
                         width: 100%;
                         height: 100%;
@@ -107,7 +108,7 @@ li{list-style-type: none;}
                 }
                 .info-cart {
                     h3 {font-size: 16px;}
-                    p {font-size: 13px; font-weight: 100;}
+                    p {font-size: 14px; font-weight: 100;}
                     a {color: $text-secondary}
                 }
             }
@@ -126,6 +127,7 @@ li{list-style-type: none;}
             width: 90%;
             @extend %btn;
             border: unset;
+            border: 1px solid $bg-btn-primary;
 
         }
     }

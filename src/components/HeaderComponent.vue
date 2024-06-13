@@ -10,8 +10,10 @@ export default {
   },
     data(){
       return {
+        topHeaderVisible: true,
         currentModale: null,
         cartModale: false,
+        logoHome: '/img/logo/home-three-log.png',
         logo: '/img/logo/menulogo.png',
         menus: [
           {
@@ -118,20 +120,39 @@ export default {
         ]
       }
     },
+    // property per cancellare la voce menu dalla pagina corrente:
+    computed: {
+      filteredMenus() {
+        return this.menus.filter(menu => menu.url !== this.$route.path);
+      }
+    },
     methods: {
+      // metodi per apriere e chiudere la modale del menu:
       modaleOn(subMenu) {
         this.currentModale = subMenu;
       },
       modaleOff() {
         this.currentModale = null;
       },
+      // metodi per aprire e chiudere la modale del carrello:
       cartOn(){
         this.cartModale = true;
       },
       cartOff() {
         this.cartModale = false;
+      },
+      // metodo per nascondere la topbar menu social allo scrollo di 100px
+      handleScroll() {
+        this.topHeaderVisible = window.scrollY < 100;
       }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleScroll);
     }
+    
 };
 </script>
 
@@ -139,7 +160,7 @@ export default {
   <header>
     <div class="container">
       <!-- parte alta del menu -->
-      <div class="top-header">
+      <div class="top-header" :class="{ hidden: !topHeaderVisible }">
         <div class="row">
           <div class="col-6">
             <div class="top-left d-flex">
@@ -167,11 +188,59 @@ export default {
             </div>
           </div>
         </div>
-
       </div>
       <!-- /parte alta del menu -->
-      <!-- parte bassa del menu -->
-      <div class="bottom-header">
+      <!-- parte bassa del menu 1-->
+      <div class="bottom-header-two" v-if="$route.path === '/'">
+        <nav class="nav row">
+          <div class="search col-1">
+            <ul>
+              <li>
+                <a href=""><i class="fas fa-magnifying-glass"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="menu col-4">
+            <ul>
+              <li v-for="(menu, index) in filteredMenus.slice(0, 3)" :key="index" @mouseenter="modaleOn(menu.subMenu)"
+                @mouseleave="modaleOff()">
+                <a :href="menu.url">{{ menu.name }}
+                  <i v-show="menu.subMenu" class="fas fa-angle-down"></i>
+                  <ModaleComponent v-if="currentModale === menu.subMenu" :subMenu="menu.subMenu" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="logo col-1">
+            <a href="/">
+              <img :src="logoHome" alt="">
+            </a>
+          </div>
+          <div class="menu col-4">
+            <ul>
+              <li v-for="(menu, index) in filteredMenus.slice(3)" :key="index" @mouseenter="modaleOn(menu.subMenu)"
+                @mouseleave="modaleOff()">
+                <a :href="menu.url">{{ menu.name }}
+                  <i v-show="menu.subMenu" class="fas fa-angle-down"></i>
+                  <ModaleComponent v-if="currentModale === menu.subMenu" :subMenu="menu.subMenu" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="search col-1">
+            <ul>
+              <li @mouseenter="cartOn" @mouseleave="cartOff">
+                <a href=""><i class="fas fa-cart-shopping"></i></a>
+                <span>{{ carts.length }}</span>
+                <CartComponent v-if="cartModale" :products="carts" />
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <!-- /parte bassa del menu 1-->
+      <!-- parte bassa del menu 2-->
+      <div class="bottom-header" v-else>
         <nav class="nav row">
           <div class="logo col-3">
             <a href="/">
@@ -180,7 +249,7 @@ export default {
           </div>
           <div class="menu col-7">
             <ul>
-              <li v-for="(menu, index) in menus" :key="index" @mouseenter="modaleOn(menu.subMenu)"
+              <li v-for="(menu, index) in filteredMenus" :key="index" @mouseenter="modaleOn(menu.subMenu)"
                 @mouseleave="modaleOff()">
                 <a :href="menu.url">{{ menu.name }}
                   <i v-show="menu.subMenu" class="fas fa-angle-down"></i>
@@ -188,33 +257,22 @@ export default {
                 </a>
               </li>
             </ul>
-            </div>
-            <div class="search col-2">
-              <ul>
-                <li>
-                  <a href=""><i class="fas fa-magnifying-glass"></i></a></li>
-                <li @mouseenter="cartOn"
-                    @mouseleave="cartOff">
-                  <a href=""><i class="fas fa-cart-shopping"></i></a>
-                  <span>{{ carts.length }}</span>
-                  <CartComponent v-if="cartModale"
-                  :products="carts"/>
-                </li>
-              </ul>
-            </div>
-            
-
-
-          <!-- <div v-for="(menu, idx) in menus" :key="idx">
-            <h3> {{ menu. }}</h3>
-
-          </div> -->
-
-
+          </div>
+          <div class="search col-2">
+            <ul>
+              <li>
+                <a href=""><i class="fas fa-magnifying-glass"></i></a>
+              </li>
+              <li @mouseenter="cartOn" @mouseleave="cartOff">
+                <a href=""><i class="fas fa-cart-shopping"></i></a>
+                <span>{{ carts.length }}</span>
+                <CartComponent v-if="cartModale" :products="carts" />
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
-
-
+      <!-- /parte bassa del menu 2-->
     </div>
   </header>
 </template>
@@ -230,19 +288,29 @@ li{list-style-type: none;}
 
 
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
   .container {
     text-align: center;
-    height: 180px;
+    
+    // top menu:
 
   .top-header {
     background-color: $top-menu;
     padding: 8px 20px 10px;
-    height: 40%;
+    height: 70px;
+    max-height: 200px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    &.hidden {
+      padding: 0;
+      max-height: 0;
+      opacity: 0;
+    }
+  
     .top-left {
       justify-content: start;
       align-items: center;
@@ -250,7 +318,6 @@ header {
         margin-right: 20px;
         border-right: 1px solid $text-primary;
         li {
-  
           a {
             display: inline-block;
             width: 40px;
@@ -307,84 +374,164 @@ header {
         font-weight: 700;
       }
     }
-
   }
 
+  // menu bottom:
   .bottom-header {
     padding: 8px 20px 10px;
     background-color: $bg-primary;
     height: 50%;
     display: flex;
-  }
-  .logo {
-    padding-right: 20px;
-  }
-  nav {
-    width: 100%;
-    // justify-content: space-between;
-    align-items: center;
-    .menu {
-      
-      text-transform: uppercase;
-      ul {
-        display: block;
-        li {
-          display: inline-block;
-          margin-right: 25px;
-          
-          a {
-            position: relative;
-            color: $text-primary;
+    .logo {
+      padding-right: 20px;
+    }
+    nav {
+      width: 100%;
+      // justify-content: space-between;
+      align-items: center;
+      .menu {
+        
+        text-transform: uppercase;
+        ul {
+          display: block;
+          li {
+            display: inline-block;
+            margin-right: 25px;
             
-            
+            a {
+              position: relative;
+              color: $text-primary;             
+            }
           }
+      
         }
     
       }
-  
-    }
-    .search {
-      display: flex;
-      justify-content: end;
-     
+      .search {
+        display: flex;
+        justify-content: end;
+      
+        ul {
 
-      ul {
-
-        li {
-          padding: 5px;
-          display: inline-block;
-          align-items: center;
-          position: relative;
-          a {
-              display: inline-block;
-              width: 50px;
-              height: 50px;
-              text-align: center;
-              border-radius: 50%;
-              margin-right: 10px;
-              line-height: 50px;
-              font-size: 20px;
-              color: $bottom-menu;
-              background-color: $text-primary;
-              transition: all 0.3s;
-          }
-          span {
-            width: 25px;
-            height: 25px;
-            font-size: 15px;
-            line-height: 25px;
-            text-align: center;
+          li {
+            padding: 5px;
             display: inline-block;
-            position: absolute;
-            top: 0;
-            right: 10px;
-            background-color: $bg-number-cart;
-            color: $text-primary;
-            border-radius: 50%;
+            align-items: center;
+            position: relative;
+            a {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                border-radius: 50%;
+                margin-right: 10px;
+                line-height: 50px;
+                font-size: 20px;
+                color: $bottom-menu;
+                background-color: $text-primary;
+                transition: all 0.3s;
+            }
+            span {
+              width: 25px;
+              height: 25px;
+              font-size: 15px;
+              line-height: 25px;
+              text-align: center;
+              display: inline-block;
+              position: absolute;
+              top: 0;
+              right: 10px;
+              background-color: $bg-number-cart;
+              color: $text-primary;
+              border-radius: 50%;
+            }
           }
         }
       }
     }
+  }
+  .bottom-header-two {
+
+    padding: 8px 20px 15px;
+      background-color: $bg-primary;
+      height: 110px;
+      display: flex;
+    
+      .logo {
+        padding-right: 20px;
+        img {
+          width: 90px;
+        }
+      }
+    
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        align-items: baseline;
+    
+        .menu {
+          text-transform: uppercase;
+    
+          ul {
+            display: block;
+    
+            li {
+              display: inline-block;
+              margin-right: 25px;
+    
+              a {
+                position: relative;
+                color: $text-primary;    
+              }
+            }
+          }   
+        }
+    
+        .search {
+          display: flex;
+          justify-content: end;
+    
+          ul {
+    
+            li {
+              padding: 5px;
+              display: inline-block;
+              align-items: center;
+              position: relative;
+    
+              a {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                border-radius: 50%;
+                margin-right: 10px;
+                line-height: 50px;
+                font-size: 20px;
+                color: $bottom-menu;
+                background-color: $text-primary;
+                transition: all 0.3s;
+              }
+    
+              span {
+                width: 25px;
+                height: 25px;
+                font-size: 15px;
+                line-height: 25px;
+                text-align: center;
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                right: 10px;
+                background-color: $bg-number-cart;
+                color: $text-primary;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+
   }
 }
 
