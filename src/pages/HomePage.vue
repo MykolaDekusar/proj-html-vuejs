@@ -64,7 +64,7 @@ export default {
       <LiveStreaming />
     </div>
     <div class="trending">
-      <TrendingBattle/>
+      <TrendingBattle />
     </div>
     <div class="upcoming">
       <UpcomingCarousel />
@@ -157,14 +157,14 @@ export default {
     z-index: 1;
   }
 }
-
+.trending {
+  background-color: $bg-primary;
+}
 .team {
   padding-top: 130px;
   padding-bottom: 100px;
   background-color: $bg-primary;
 }
-
-.trending,
 .features,
 .news {
   height: 500px;
@@ -177,7 +177,6 @@ export default {
   background-color: rgb(56, 42, 243);
 }
 
-.trending,
 .shop,
 .features {
   background-color: antiquewhite;
