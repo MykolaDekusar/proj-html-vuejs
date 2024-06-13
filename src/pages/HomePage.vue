@@ -108,6 +108,8 @@ export default {
   padding-top: 150px;
   padding-bottom: 50px;
   background-image: url(img/background/live-streming-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
 
   &::before {
