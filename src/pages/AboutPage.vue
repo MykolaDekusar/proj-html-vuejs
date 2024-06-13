@@ -3,6 +3,8 @@
 import TeamMembers from "../components/TeamMembers.vue";
 import LiveStreaming from "../components/LiveStreaming.vue";
 import TrendingGamesCarousel from "../components/TrendingGamesCarousel.vue";
+import ExtremFeatureComponent from '../components/ExtremFeatureComponent.vue';
+
 
 export default {
    nome: 'AboutPage',
@@ -26,6 +28,7 @@ export default {
       TeamMembers,
       LiveStreaming,
       TrendingGamesCarousel,
+      ExtremFeatureComponent,
    }
 }
 
@@ -99,20 +102,23 @@ export default {
          </div>
       </div>
    </section>
-   <div class="team"><TeamMembers /></div>
-   <div class="live"><LiveStreaming /></div>
+   <div class="team">
+      <TeamMembers />
+   </div>
+   <div class="live">
+      <LiveStreaming />
+   </div>
    <div class="trending-games">
       <div class="container">
-        <div class="col-6">
-          <h3>Trending Games</h3>
-          <h1>Choose Who Is The Best In World!</h1>
-        </div>
-        <TrendingGamesCarousel
-          :teams="gameTeams"
-          :titles="gameTitles"
-          :images="portfolioImages"/>
+         <div class="col-6">
+            <h3>Trending Games</h3>
+            <h1>Choose Who Is The Best In World!</h1>
+         </div>
+         <TrendingGamesCarousel :teams="gameTeams" :titles="gameTitles" :images="portfolioImages" />
       </div>
-    </div>
+   </div>
+
+   <div class="extrim-feat"> <ExtremFeatureComponent/> </div>
 
 </template>
 
@@ -313,6 +319,10 @@ section {
    background-color: $bg-primary;
    padding-top: 100px;
    padding-bottom: 80px;
+}
+
+.extrim-feat {
+   
 }
 
 
