@@ -321,6 +321,8 @@ export default {
   border-radius: 10px;
   border: 1px solid #00ac4d;
   transition: all 0.3s;
+  margin-left: 0;
+  margin-right: 0;
   &:hover {
     border: 1px solid transparent;
     background-color: #333287;
