@@ -2,6 +2,7 @@
 <script>
 import TeamMembers from "../components/TeamMembers.vue";
 import LiveStreaming from "../components/LiveStreaming.vue";
+import TrendingGamesCarousel from "../components/TrendingGamesCarousel.vue";
 
 export default {
    nome: 'AboutPage',
@@ -10,12 +11,21 @@ export default {
    },
    data() {
       return {
+         gameTeams: ["1.png", "5.png", "6.png", "3.png"],
+         gameTitles: [
+            "Assassin's Creed",
+            "Call of Duty",
+            "Tomb Raider",
+            "Mortal Combat X",
+         ],
+         portfolioImages: [1, 2, 3, 4],
 
       }
    },
    components: {
       TeamMembers,
       LiveStreaming,
+      TrendingGamesCarousel,
    }
 }
 
@@ -91,8 +101,19 @@ export default {
    </section>
    <div class="team"><TeamMembers /></div>
    <div class="live"><LiveStreaming /></div>
-   
-   
+   <div class="trending-games">
+      <div class="container">
+        <div class="col-6">
+          <h3>Trending Games</h3>
+          <h1>Choose Who Is The Best In World!</h1>
+        </div>
+        <TrendingGamesCarousel
+          :teams="gameTeams"
+          :titles="gameTitles"
+          :images="portfolioImages"/>
+      </div>
+    </div>
+
 </template>
 
 
@@ -269,6 +290,29 @@ section {
    padding-bottom: 50px;
    background-image: url(img/background/live-streming-bg.png);
    position: relative;
+}
+
+// component TrendingGamesCarousel:
+.trending-games .col-6 h1 {
+   margin-top: 10px;
+   font-size: 55px;
+   font-weight: 600;
+   color: #ffffff;
+}
+
+.trending-games .col-6 h3 {
+   font-size: 18px;
+   font-weight: 600;
+   color: #00ac4d;
+   position: relative;
+   margin-bottom: 10px;
+   text-transform: capitalize;
+}
+
+.trending-games {
+   background-color: $bg-primary;
+   padding-top: 100px;
+   padding-bottom: 80px;
 }
 
 
